@@ -17,6 +17,7 @@ use Iterator;
 use Kdyby;
 use Nette\Http\IRequest;
 use Nette\Http\IResponse;
+use Nette\Http\SameSite;
 use Nette\Http\Session as NetteSession;
 use Nette\Http\SessionSection as NetteSessionSection;
 use SessionHandlerInterface;
@@ -217,7 +218,7 @@ class Session extends \Nette\Http\Session
 		return $this;
 	}
 
-	public function setCookieParameters(string $path, ?string $domain = NULL, ?bool $secure = NULL, ?string $sameSite = NULL): static
+	public function setCookieParameters(string $path, ?string $domain = NULL, ?bool $secure = NULL, SameSite|string|NULL $sameSite = NULL): static
 	{
 		$this->originalSession->setCookieParameters($path, $domain, $secure, $sameSite);
 
